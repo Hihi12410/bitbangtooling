@@ -1,3 +1,10 @@
+/*
+    This Source Code Form is subject to the terms of the Mozilla Public
+    License, v. 2.0. If a copy of the MPL was not distributed with this
+    file, You can obtain one at https://mozilla.org/MPL/2.0/.
+*/
+
+
 // Some file bs.
 
 #include "filelib.h"
@@ -8,8 +15,8 @@
 str r_file(char * fpath) 
 {
     // Open file for reading.
-    FILE * file;
-    if (fopen_s(&file, fpath, "rb")) 
+    FILE * file = fopen(fpath, "rb");
+    if (!file) 
     {
         perror("File could not be opened.");
         return ERROR_STRING;
